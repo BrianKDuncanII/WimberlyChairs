@@ -23,6 +23,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"
+        integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -39,20 +42,116 @@
             <h2 style="display: inline;"><a class="active" href="contact.html"><i class="fas fa-envelope"></i>
                     Contact</a></h2>
         </div>
-        <a id="facebook_icon" href="https://www.facebook.com/wimberleychairs2/"><i
-                class="fab fa-facebook fa-3x"></i></a>
+        <a href="https://yelp.to/qTKq/uZkVrRY2HU"><img id="social_icon" style="transform: rotate(20deg); width: 120px; float: right;"
+                src="img/yelp.png"></a>
     </div>
+
+    <h4 style="text-align: center; color: green; margin-top: -35px; font-family: 'Claremont-Light';"><i
+            class="far fa-clock"></i> Always Open!</h4>
 
     <div style="max-width: 56em; margin: auto;">
         <h2>Address</h2>
         <hr>
-        <h4 style="margin-top: 10px;" id="contact_info"><a style="color: #5E1020; text-decoration: underline;" href="https://www.google.com/maps/place/Wimberley+Chair+Company/@29.9238556,-98.0648867,17z/data=!3m1!4b1!4m5!3m4!1s0x865b5f43577138d3:0xcf8dc337410ad1cb!8m2!3d29.923851!4d-98.062698">7312 Ranch Road 12, San Marcos, TX 78666</a></h4>
+        <h4 style="margin-top: 10px;" id="contact_info"><a style="color: #5E1020; text-decoration: underline;"
+                href="https://www.google.com/maps/place/Wimberley+Chair+Company/@29.9238556,-98.0648867,17z/data=!3m1!4b1!4m5!3m4!1s0x865b5f43577138d3:0xcf8dc337410ad1cb!8m2!3d29.923851!4d-98.062698">7312
+                Ranch Road 12<br> San Marcos, TX 78666</a></h4>
+        <div id="map" style="width:100%;height:400px;"></div>
+
         <h2>Phone & Email</h2>
         <hr>
         <h4 style="margin-top: 10px;" id="contact_info">(512) - 754 - 1027</h4>
+        <h2 style="margin-top: 50px;">Contact Us</h2>
+        <hr>
     </div>
+
+    <form id="contact-form" method="post" action="contact.php" role="form">
+
+        <div class="messages"></div>
+
+        <div class="controls">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Firstname *</label>
+                        <input id="form_name" type="text" name="name" class="form-control"
+                            placeholder="Please enter your firstname *" required="required"
+                            data-error="Firstname is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_lastname">Lastname *</label>
+                        <input id="form_lastname" type="text" name="surname" class="form-control"
+                            placeholder="Please enter your lastname *" required="required"
+                            data-error="Lastname is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_email">Email *</label>
+                        <input id="form_email" type="email" name="email" class="form-control"
+                            placeholder="Please enter your email *" required="required"
+                            data-error="Valid email is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_need">Please specify your need *</label>
+                        <select id="form_need" name="need" class="form-control" required="required"
+                            data-error="Please specify your need.">
+                            <option value=""></option>
+                            <option value="Request quotation">Blah 1</option>
+                            <option value="Request order status">Blah 2</option>
+                            <option value="Request copy of an invoice">Blah 3</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="form_message">Message *</label>
+                        <textarea id="form_message" name="message" class="form-control" placeholder="Message *" rows="4"
+                            required="required" data-error="Please, leave us a message."></textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-success btn-send" value="Send message">
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+    <script>
+        function myMap() {
+            var mapProp = {
+                center: new google.maps.LatLng(29.923906, -98.062706),
+                zoom: 16,
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_Ovoj1_8kHwJA5AnC2C_7WoADSk4SsHo&callback=myMap">
+    </script>
+
 </body>
 
-<div id="footer">
-    <p style="text-align: center; padding-top: 20px;">© 2019 Wimberly Chair Co.</p>
-</div>
+<footer>
+    <a href="https://www.instagram.com/wimberleychairs/?hl=en"><i id="social_icon"
+            class="fab fa-instagram fa-2x"></i></a>
+    <a style="margin-left: -250px;" id="social_icon" href="https://www.facebook.com/wimberleychairs2/"><i
+            class="fab fa-facebook fa-2x"></i></a>
+    <p style="text-align: center; padding-top: 10px;">© 2019 Wimberly Chair Co.</p>
+</footer>
